@@ -471,3 +471,102 @@ Tampilkan DartPad 3
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 4 -->
+<div class="section">
+<h2>4.Redirecting Constructor dengan Named Parameters</h2>
+<ul>
+  <li>
+    Pada program ini, <i>redirecting constructor</i> digunakan bersama
+    <b>named parameters</b> pada class <b>Person</b>.
+  </li>
+
+  <li>
+    Constructor utama menerima parameter <b>name</b>, <b>age</b>,
+    dan <b>email</b>.
+  </li>
+
+  <li>
+    Constructor <b>anonymous()</b> digunakan untuk membuat objek
+    dengan nilai default.
+  </li>
+
+  <li>
+    Constructor <b>fromName()</b> digunakan untuk membuat objek
+    hanya berdasarkan nama.
+  </li>
+
+  <li>
+    Constructor <b>adult()</b> digunakan untuk membuat objek
+    dengan usia dewasa secara otomatis.
+  </li>
+
+  <li>
+    Constructor <b>child()</b> digunakan untuk membuat objek
+    anak dengan usia tertentu.
+  </li>
+
+  <li>
+    Program kemudian menampilkan data beberapa objek Person
+    yang dibuat menggunakan redirecting constructor.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ======================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI.2A
+// ======================================
+
+class Person {
+  final String name;
+  final int age;
+  final String? email;
+
+  Person({
+    required this.name,
+    required this.age,
+    this.email,
+  });
+
+  Person.anonymous()
+      : this(name: 'Anonymous', age: 0);
+
+  Person.fromName(String name)
+      : this(name: name, age: 0);
+
+  Person.adult(String name)
+      : this(name: name, age: 18);
+
+  Person.child(String name, int years)
+      : this(
+          name: name,
+          age: years,
+          email: null,
+        );
+
+  @override
+  String toString() {
+    return 'Name: $name, Age: $age, Email: ${email ?? "N/A"}';
+  }
+}
+
+void main() {
+  print(Person.anonymous());
+  print(Person.fromName("Yoza"));
+  print(Person.adult("Rafila"));
+  print(Person.child("Budi", 10));
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart4','https://dartpad.dev/embed-inline.html?id=cc9b133cec2761e05257c41ee53bb6d7&split=60&run=true')">
+Tampilkan DartPad 4
+</button>
+
+<iframe id="dart4" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
