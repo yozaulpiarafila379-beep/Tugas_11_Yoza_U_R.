@@ -1162,3 +1162,90 @@ Tampilkan DartPad 9
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 10 -->
+<div class="section">
+<h2>10.Latihan – Circle Class dengan Redirecting Constructor</h2>
+<ul>
+  <li>
+    Pada program ini, class Circle digunakan untuk merepresentasikan bangun datar lingkaran.
+  </li>
+
+  <li>
+    Constructor utama menerima nilai radius sebagai parameter utama.
+  </li>
+
+  <li>
+    Constructor fromDiameter digunakan untuk membuat objek lingkaran berdasarkan nilai diameter.
+  </li>
+
+  <li>
+    Constructor fromCircumference digunakan untuk membuat objek lingkaran berdasarkan nilai keliling.
+  </li>
+
+  <li>
+    Constructor fromArea digunakan untuk membuat objek lingkaran berdasarkan nilai luas.
+  </li>
+
+  <li>
+    Seluruh constructor tambahan menggunakan redirecting constructor untuk memanggil constructor utama.
+  </li>
+
+  <li>
+    Program kemudian menampilkan hasil pembuatan objek lingkaran dari radius, diameter, keliling, dan luas.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Judul : Latihan Redirecting Constructor
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+import 'dart:math';
+
+class Circle {
+  final double radius;
+
+  // Main Constructor
+  Circle(this.radius);
+
+  // Redirecting dari Diameter
+  Circle.fromDiameter(double diameter)
+      : this(diameter / 2);
+
+  // Redirecting dari Keliling
+  Circle.fromCircumference(double circumference)
+      : this(circumference / (2 * pi));
+
+  // Redirecting dari Luas
+  Circle.fromArea(double area)
+      : this(sqrt(area / pi));
+}
+
+void main() {
+  var byRadius = Circle(7);
+  var byDiameter = Circle.fromDiameter(14);
+  var byCircumference = Circle.fromCircumference(43.98);
+  var byArea = Circle.fromArea(153.94);
+
+  print("=== Redirecting Constructor ===");
+  print("Radius Constructor     : ${byRadius.radius}");
+  print("Diameter Constructor   : ${byDiameter.radius}");
+  print("Keliling Constructor   : ${byCircumference.radius.toStringAsFixed(2)}");
+  print("Luas Constructor       : ${byArea.radius.toStringAsFixed(2)}");
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart10','https://dartpad.dev/embed-inline.html?id=b0db5bd76d73d2f2108cef24dc53dfdd&split=60&run=true')">
+Tampilkan DartPad 10
+</button>
+
+<iframe id="dart10" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
