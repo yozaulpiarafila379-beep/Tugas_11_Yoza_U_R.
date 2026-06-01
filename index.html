@@ -1067,3 +1067,98 @@ Tampilkan DartPad 8
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 9 -->
+<div class="section">
+<h2>9.Redirecting Constructor dengan Initializer List</h2>
+<ul>
+  <li>
+    Pada program ini, redirecting constructor dikombinasikan dengan initializer list untuk menginisialisasi data objek.
+  </li>
+
+  <li>
+    Class User memiliki constructor utama yang digunakan untuk menyimpan informasi pengguna.
+  </li>
+
+  <li>
+    Constructor guest digunakan untuk membuat akun tamu dengan data default.
+  </li>
+
+  <li>
+    Constructor fromUsername digunakan untuk membuat data pengguna berdasarkan username yang diberikan.
+  </li>
+
+  <li>
+    Initializer list digunakan untuk memberikan nilai awal sebelum body constructor dijalankan.
+  </li>
+
+  <li>
+    Program kemudian membuat beberapa objek User dan menampilkan informasinya ke layar.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+class User {
+  final String id;
+  final String username;
+  final String email;
+  final DateTime createdAt;
+  final bool isActive;
+
+  User({
+    required this.id,
+    required this.username,
+    required this.email,
+    DateTime? createdAt,
+    bool isActive = true,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        isActive = isActive {
+    print('User $username created');
+  }
+
+  User.guest()
+      : this(
+          id: 'guest',
+          username: 'Guest',
+          email: 'guest@example.com',
+          isActive: false,
+        );
+
+  User.fromUsername(String username)
+      : this(
+          id: username.toLowerCase(),
+          username: username,
+          email: '${username.toLowerCase()}@example.com',
+        );
+}
+
+void main() {
+  var guest = User.guest();
+  var admin = User.fromUsername('Admin');
+
+  print('');
+  print('Guest : ${guest.username}');
+  print('Email : ${guest.email}');
+
+  print('');
+  print('Admin : ${admin.username}');
+  print('Email : ${admin.email}');
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart9','https://dartpad.dev/embed-inline.html?id=6ecd0b787fd79775a7da01ce43fc3707&split=60&run=true')">
+Tampilkan DartPad 9
+</button>
+
+<iframe id="dart9" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
