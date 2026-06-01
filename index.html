@@ -985,65 +985,76 @@ style="display:none; width:100%; height:300px;">
 
 class ApiResponse {
   final bool success;
-  final dynamic data;
-  final String? error;
+  final String message;
   final int statusCode;
-  final DateTime timestamp;
 
   ApiResponse({
     required this.success,
-    this.data,
-    this.error,
+    required this.message,
     required this.statusCode,
-    required this.timestamp,
   });
 
-  ApiResponse.success(this.data)
+  // Success Response
+  ApiResponse.success(String data)
       : this(
           success: true,
+          message: data,
           statusCode: 200,
-          timestamp: DateTime.now(),
         );
 
-  ApiResponse.error(String this.error, int statusCode)
+  // Error Response
+  ApiResponse.error(String error)
       : this(
           success: false,
-          statusCode: statusCode,
-          timestamp: DateTime.now(),
+          message: error,
+          statusCode: 500,
         );
 
+  // Not Found Response
   ApiResponse.notFound()
       : this(
           success: false,
-          error: 'Resource not found',
+          message: 'Resource Not Found',
           statusCode: 404,
-          timestamp: DateTime.now(),
         );
 
+  // Unauthorized Response
   ApiResponse.unauthorized()
       : this(
           success: false,
-          error: 'Unauthorized access',
+          message: 'Unauthorized Access',
           statusCode: 401,
-          timestamp: DateTime.now(),
         );
 }
 
 void main() {
-  var success = ApiResponse.success('Data loaded');
-  var error = ApiResponse.error('Server error', 500);
+  var success = ApiResponse.success('Data berhasil dimuat');
+  var error = ApiResponse.error('Server Error');
   var notFound = ApiResponse.notFound();
+  var unauthorized = ApiResponse.unauthorized();
 
+  print('=== SUCCESS RESPONSE ===');
+  print('Status  : ${success.statusCode}');
   print('Success : ${success.success}');
-  print('Data    : ${success.data}');
+  print('Message : ${success.message}');
   print('');
 
-  print('Error   : ${error.error}');
+  print('=== ERROR RESPONSE ===');
   print('Status  : ${error.statusCode}');
+  print('Success : ${error.success}');
+  print('Message : ${error.message}');
   print('');
 
-  print('Error   : ${notFound.error}');
+  print('=== NOT FOUND RESPONSE ===');
   print('Status  : ${notFound.statusCode}');
+  print('Success : ${notFound.success}');
+  print('Message : ${notFound.message}');
+  print('');
+
+  print('=== UNAUTHORIZED RESPONSE ===');
+  print('Status  : ${unauthorized.statusCode}');
+  print('Success : ${unauthorized.success}');
+  print('Message : ${unauthorized.message}');
 }
 </code></pre>
 </div>
