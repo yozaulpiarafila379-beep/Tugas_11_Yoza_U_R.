@@ -381,3 +381,93 @@ Tampilkan DartPad 2
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 3 -->
+<div class="section">
+<h2>3.Solusi dengan Redirecting Constructor</h2>
+<ul>
+  <li>
+    Pada program ini digunakan <i>redirecting constructor</i>
+    untuk mengarahkan constructor lain ke constructor utama.
+  </li>
+
+  <li>
+    Constructor <b>square()</b> digunakan untuk membuat objek
+    persegi dengan ukuran yang sama.
+  </li>
+
+  <li>
+    Constructor <b>withDefault()</b> digunakan untuk membuat objek
+    dengan ukuran standar.
+  </li>
+
+  <li>
+    Constructor <b>fromWidth()</b> digunakan untuk membuat objek
+    berdasarkan nilai lebar tertentu.
+  </li>
+
+  <li>
+    Redirecting constructor membantu mengurangi duplikasi kode
+    dan membuat program lebih rapi.
+  </li>
+
+  <li>
+    Program kemudian menampilkan beberapa objek Rectangle
+    yang dibuat menggunakan redirecting constructor.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ======================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI.2A
+// ======================================
+
+class Rectangle {
+  final double width;
+  final double height;
+
+  Rectangle(this.width, this.height);
+
+  Rectangle.square(double side)
+      : this(side, side);
+
+  Rectangle.withDefault()
+      : this(100, 50);
+
+  Rectangle.fromWidth(double width)
+      : this(width, width * 0.618);
+
+  @override
+  String toString() {
+    return 'Rectangle(width: $width, height: $height)';
+  }
+}
+
+void main() {
+  var square = Rectangle.square(10);
+  var defaultRect = Rectangle.withDefault();
+  var goldenRect = Rectangle.fromWidth(100);
+
+  print("=== DATA PERSEGI ===");
+  print(square);
+
+  print("\n=== DATA DEFAULT ===");
+  print(defaultRect);
+
+  print("\n=== GOLDEN RATIO RECTANGLE ===");
+  print(goldenRect);
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart3','https://dartpad.dev/embed-inline.html?id=da3eddefe3280b2904c535694673185e&split=60&run=true')">
+Tampilkan DartPad 3
+</button>
+
+<iframe id="dart3" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
