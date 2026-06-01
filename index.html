@@ -941,3 +941,118 @@ Tampilkan DartPad 7
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 8 -->
+<div class="section">
+<h2>8.Praktik 2 – API Response dengan Redirecting</h2>
+<ul>
+  <li>
+    Pada program ini, redirecting constructor digunakan untuk membuat berbagai jenis respons API.
+  </li>
+
+  <li>
+    Class ApiResponse memiliki constructor utama yang digunakan untuk menyimpan data respons.
+  </li>
+
+  <li>
+    Constructor success digunakan untuk membuat respons berhasil dengan status code 200.
+  </li>
+
+  <li>
+    Constructor error digunakan untuk membuat respons gagal dengan status code tertentu.
+  </li>
+
+  <li>
+    Constructor notFound digunakan untuk menghasilkan respons error 404.
+  </li>
+
+  <li>
+    Constructor unauthorized digunakan untuk menghasilkan respons error 401.
+  </li>
+
+  <li>
+    Program kemudian menampilkan berbagai jenis respons API ke layar.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+class ApiResponse {
+  final bool success;
+  final dynamic data;
+  final String? error;
+  final int statusCode;
+  final DateTime timestamp;
+
+  ApiResponse({
+    required this.success,
+    this.data,
+    this.error,
+    required this.statusCode,
+    required this.timestamp,
+  });
+
+  ApiResponse.success(this.data)
+      : this(
+          success: true,
+          statusCode: 200,
+          timestamp: DateTime.now(),
+        );
+
+  ApiResponse.error(String this.error, int statusCode)
+      : this(
+          success: false,
+          statusCode: statusCode,
+          timestamp: DateTime.now(),
+        );
+
+  ApiResponse.notFound()
+      : this(
+          success: false,
+          error: 'Resource not found',
+          statusCode: 404,
+          timestamp: DateTime.now(),
+        );
+
+  ApiResponse.unauthorized()
+      : this(
+          success: false,
+          error: 'Unauthorized access',
+          statusCode: 401,
+          timestamp: DateTime.now(),
+        );
+}
+
+void main() {
+  var success = ApiResponse.success('Data loaded');
+  var error = ApiResponse.error('Server error', 500);
+  var notFound = ApiResponse.notFound();
+
+  print('Success : ${success.success}');
+  print('Data    : ${success.data}');
+  print('');
+
+  print('Error   : ${error.error}');
+  print('Status  : ${error.statusCode}');
+  print('');
+
+  print('Error   : ${notFound.error}');
+  print('Status  : ${notFound.statusCode}');
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart8','https://dartpad.dev/embed-inline.html?id=7ce7607195072fd803a84fdbe8eab7f3&split=60&run=true')">
+Tampilkan DartPad 8
+</button>
+
+<iframe id="dart8" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
