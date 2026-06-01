@@ -217,3 +217,85 @@ function runDart(id, url) {
     </div>
 
 </div>
+
+<!-- 1 -->
+<div class="section">
+<h2>1.Sintaks Dasar Redirecting Constructor</h2>
+<ul>
+  <li>
+    Pada program ini, <i>redirecting constructor</i> digunakan pada class
+    <b>Point</b> untuk mengarahkan pemanggilan constructor ke constructor utama.
+  </li>
+
+  <li>
+    Constructor utama <b>Point(this.x, this.y)</b> digunakan untuk
+    menginisialisasi nilai koordinat x dan y.
+  </li>
+
+  <li>
+    Constructor <b>origin()</b> digunakan untuk membuat titik pada
+    koordinat (0,0).
+  </li>
+
+  <li>
+    Constructor <b>onXAxis()</b> digunakan untuk membuat titik pada
+    sumbu X dengan nilai Y = 0.
+  </li>
+
+  <li>
+    Constructor <b>onYAxis()</b> digunakan untuk membuat titik pada
+    sumbu Y dengan nilai X = 0.
+  </li>
+
+  <li>
+    Program kemudian menampilkan beberapa objek Point yang dibuat
+    menggunakan redirecting constructor.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ======================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI.2A
+// ======================================
+
+class Point {
+  final double x;
+  final double y;
+
+  Point(this.x, this.y);
+
+  Point.origin() : this(0, 0);
+
+  Point.onXAxis(double x) : this(x, 0);
+
+  Point.onYAxis(double y) : this(0, y);
+
+  @override
+  String toString() {
+    return 'Point($x, $y)';
+  }
+}
+
+void main() {
+  var origin = Point.origin();
+  var pointX = Point.onXAxis(5);
+  var pointY = Point.onYAxis(3);
+
+  print('Origin      : $origin');
+  print('Point X     : $pointX');
+  print('Point Y     : $pointY');
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart1','https://dartpad.dev/embed-inline.html?id=0fcb5a7e6b4a0bb40985dd2b896119e5&split=60&run=true')">
+Tampilkan DartPad 1
+</button>
+
+<iframe id="dart1" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
