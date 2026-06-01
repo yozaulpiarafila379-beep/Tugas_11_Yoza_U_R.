@@ -800,3 +800,144 @@ Tampilkan DartPad 6
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 7 -->
+<div class="section">
+<h2>7.Multiple Redirecting Levels</h2>
+<ul>
+  <li>
+    Pada program ini, redirecting constructor digunakan untuk mengarahkan proses pembuatan objek ke constructor utama.
+  </li>
+
+  <li>
+    Class Product memiliki beberapa constructor yaitu basic, withCategory, dan full.
+  </li>
+
+  <li>
+    Constructor basic digunakan untuk membuat produk dengan data minimum.
+  </li>
+
+  <li>
+    Constructor withCategory digunakan untuk membuat produk dengan tambahan informasi kategori.
+  </li>
+
+  <li>
+    Constructor full digunakan untuk membuat produk dengan informasi yang lebih lengkap seperti stok dan tanggal kedaluwarsa.
+  </li>
+
+  <li>
+    Seluruh constructor tersebut mengarahkan proses inisialisasi ke constructor utama sehingga mengurangi duplikasi kode.
+  </li>
+
+  <li>
+    Program kemudian menampilkan informasi produk yang dibuat menggunakan masing-masing constructor.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+class Product {
+  final String id;
+  final String name;
+  final double price;
+  final String category;
+  final int stock;
+  final DateTime? expiryDate;
+
+  Product({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.category,
+    required this.stock,
+    this.expiryDate,
+  });
+
+  Product.basic(String id, String name, double price)
+      : this(
+          id: id,
+          name: name,
+          price: price,
+          category: 'General',
+          stock: 0,
+        );
+
+  Product.withCategory(
+    String id,
+    String name,
+    double price,
+    String category,
+  ) : this(
+          id: id,
+          name: name,
+          price: price,
+          category: category,
+          stock: 0,
+        );
+
+  Product.full({
+    required String id,
+    required String name,
+    required double price,
+    required String category,
+    required int stock,
+    DateTime? expiry,
+  }) : this(
+          id: id,
+          name: name,
+          price: price,
+          category: category,
+          stock: stock,
+          expiryDate: expiry,
+        );
+}
+
+void main() {
+  var basic = Product.basic('P001', 'Item 1', 10.0);
+
+  var categorized = Product.withCategory(
+    'P002',
+    'Item 2',
+    20.0,
+    'Electronics',
+  );
+
+  var full = Product.full(
+    id: 'P003',
+    name: 'Item 3',
+    price: 30.0,
+    category: 'Food',
+    stock: 100,
+    expiry: DateTime.now().add(Duration(days: 30)),
+  );
+
+  print('=== Product Basic ===');
+  print('${basic.id} - ${basic.name}');
+  print('');
+
+  print('=== Product Category ===');
+  print('${categorized.id} - ${categorized.category}');
+  print('');
+
+  print('=== Product Full ===');
+  print('${full.id} - ${full.name}');
+  print('Stock : ${full.stock}');
+  print('Category : ${full.category}');
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart7','https://dartpad.dev/embed-inline.html?id=d1a1cb2bfa752c6c284d76eaf9260b1b&split=60&run=true')">
+Tampilkan DartPad 7
+</button>
+
+<iframe id="dart7" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
